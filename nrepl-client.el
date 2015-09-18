@@ -271,11 +271,7 @@ Bind the value of the provided KEYS and execute BODY."
   "Return t if HOST is local."
   (string-match-p tramp-local-host-regexp host))
 
-(defun nrepl-project-directory-for (dir-name)
-  "Return the project directory for the specified DIR-NAME."
-  (when dir-name
-    (or (locate-dominating-file dir-name "project.clj")
-        (locate-dominating-file dir-name "build.boot"))))
+(defalias 'nrepl-project-directory-for 'clojure-project-dir)
 
 (defun nrepl-find-reusable-repl-buffer (endpoint project-directory)
   "Check whether a reusable connection buffer already exists.
